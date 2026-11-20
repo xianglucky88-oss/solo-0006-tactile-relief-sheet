@@ -1,0 +1,52 @@
+{
+  "project_shape": "backend",
+  "modules": [
+    {
+      "id": "__main__",
+      "path": "reliefsheet/__main__.py"
+    },
+    {
+      "id": "clearance",
+      "path": "reliefsheet/clearance.py"
+    },
+    {
+      "id": "pipeline",
+      "path": "reliefsheet/pipeline.py"
+    },
+    {
+      "id": "plates",
+      "path": "reliefsheet/plates.py"
+    }
+  ],
+  "workflows": [
+    {
+      "id": "report",
+      "name": "离线数据报告",
+      "entry": "python3 -B -m reliefsheet examples/demo.json",
+      "success": "将正背版绘制坐标注册到同一张纸，输出禁区、越界和凸点间距冲突。",
+      "failure": "格式错误退出 2，例如：dot outside its drawing",
+      "verification": "python3 -B examples/smoke.py",
+      "module_ids": [
+        "__main__",
+        "clearance",
+        "pipeline",
+        "plates"
+      ],
+      "steps": [
+        "读取样例与验证来源数据",
+        "计算并核对结构化报告或拒绝诊断"
+      ]
+    }
+  ],
+  "complexity": {
+    "mechanisms": [
+      {
+        "id": "domain-report",
+        "workflow_ids": [
+          "report"
+        ],
+        "behavior": "registered geometry, keepouts, and paired-clearance evidence"
+      }
+    ]
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "grid": [12, 8], "back_offset": [1, 0], "min_same": 2, "min_opposite": 2,
+  "front": [{"id":"F-dot", "at":[3, 4]}, {"id":"F-edge", "at":[5, 3]}],
+  "back": [{"id":"B-left", "at":[9, 4]}, {"id":"B-right", "at":[3, 3]}],
+  "keepouts": [{"id":"binding-slot", "rect":[8, 2, 10, 5]}]
+}
