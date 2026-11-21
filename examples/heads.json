@@ -1,0 +1,28 @@
+{
+  "grid": [20, 12], "back_offset": [1, 0], "min_same": 2, "min_opposite": 3,
+  "heads": [
+    {"id": "nut-m3", "rect": [-1, 0, 1, 2]},
+    {"id": "dual-pad", "rect": [0, 0, 3, 1]},
+    {"id": "pad-3x1", "rect": [0, 0, 3, 1]}
+  ],
+  "front": [
+    {"id": "F-nut-a", "at": [4, 4], "head": "nut-m3"},
+    {"id": "F-nut-b", "at": [4, 6], "head": "nut-m3"},
+    {"id": "F-pad", "at": [5, 1], "head": "pad-3x1"},
+    {"id": "F-touch", "at": [12, 2], "head": "pad-3x1"},
+    {"id": "F-dual", "at": [5, 5], "head": "dual-pad"},
+    {"id": "F-plain", "at": [1, 1]}
+  ],
+  "back": [
+    {"id": "B-nut", "at": [10, 4], "head": "nut-m3"},
+    {"id": "B-pad", "at": [6, 1], "head": "pad-3x1"},
+    {"id": "B-edge", "at": [19, 5], "head": "pad-3x1"},
+    {"id": "B-dual", "at": [12, 5], "head": "dual-pad"},
+    {"id": "B-plain", "at": [2, 9]}
+  ],
+  "keepouts": [
+    {"id": "binding-slot", "rect": [7, 0, 9, 2]},
+    {"id": "hanger", "rect": [7, 5, 8, 8]},
+    {"id": "clearance-gate", "rect": [15, 2, 17, 5]}
+  ]
+}
