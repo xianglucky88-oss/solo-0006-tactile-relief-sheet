@@ -6,10 +6,21 @@
 
 格点从 0 开始；背版先水平镜像再叠加偏移。矩形左闭右开；点距为两个轴差的最大值。
 
+## 合版契约
+
+`python3 -B -m reliefsheet --merge BASE LEFT RIGHT` 以底稿为基合入两份完整修订。
+
+- 尺寸固定，任何改动都停止合版。
+- 标记按 (面, ID) 识别，比较原绘图坐标；禁区按 ID 识别，比较原矩形；背版偏移与两类最小距离各按独立对象合并。
+- 两支改同值记一笔（来源 `both`）；删除对修改、改成不同值停止合版。
+- 冲突身份为“规则 + 涉事原对象”，距离或阈值变化不另立身份；结果区分 `branch-existing` 与 `merge-new`。
+- 每个合版新增冲突给出全部按编辑条数最小的成因组合，从底稿单独施加即可重现同一身份；重放使用该组合自身选到的偏移与阈值重新套准和判定，不借用完整合版坐标。
+- 新增冲突集中依赖对象至多四个，不枚举全部对象编辑子集；无新增时仍交付合版图与两支/合版对照。
+
 ## 责任边界
 
-命令入口只处理文件输入和退出码。`pipeline.py` 协调校验、数据计算和报告；其余模块负责独立的数据语义。生产代码：`reliefsheet/__main__.py`, `reliefsheet/clearance.py`, `reliefsheet/pipeline.py`, `reliefsheet/plates.py`。
+命令入口只处理文件输入和退出码。`pipeline.py` 协调校验、数据计算和报告；其余模块负责独立的数据语义。生产代码：`reliefsheet/__main__.py`, `reliefsheet/clearance.py`, `reliefsheet/merge.py`, `reliefsheet/pipeline.py`, `reliefsheet/plates.py`。
 
 ## 验证与边界
 
-运行 `python3 -B examples/smoke.py`。样例经过真实生产入口，既核对核心数据结果也核对非零退出码及不输出部分数据的约束。不安装第三方依赖，不提交未来题目、答案、隐藏测试或评审材料。
+运行 `python3 -B examples/smoke.py`。样例经过真实生产入口，既核对核心数据结果也核对非零退出码及不输出部分数据的约束。验收样例放在 `examples/merge/`。不安装第三方依赖，不提交未来题目、答案、隐藏测试或评审材料。

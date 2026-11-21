@@ -16,6 +16,10 @@
     {
       "id": "plates",
       "path": "reliefsheet/plates.py"
+    },
+    {
+      "id": "merge",
+      "path": "reliefsheet/merge.py"
     }
   ],
   "workflows": [
@@ -30,11 +34,13 @@
         "__main__",
         "clearance",
         "pipeline",
-        "plates"
+        "plates",
+        "merge"
       ],
       "steps": [
         "读取样例与验证来源数据",
-        "计算并核对结构化报告或拒绝诊断"
+        "计算并核对结构化报告或拒绝诊断",
+        "按面/ID 与独立设置对象合版，分类冲突并重放最小成因"
       ]
     }
   ],
@@ -45,7 +51,7 @@
         "workflow_ids": [
           "report"
         ],
-        "behavior": "registered geometry, keepouts, and paired-clearance evidence"
+        "behavior": "registered geometry, keepouts, and paired-clearance evidence; three-way merge and minimal-cause replay"
       }
     ]
   }

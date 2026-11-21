@@ -1,0 +1,4 @@
+{"grid": [16, 10], "back_offset": [0, 0], "min_same": 2, "min_opposite": 2,
+ "front": [{"id": "A", "at": [4, 2]}, {"id": "B", "at": [10, 2]}],
+ "back": [{"id": "B1", "at": [4, 6]}, {"id": "B2", "at": [12, 6]}],
+ "keepouts": [{"id": "k0", "rect": [14, 7, 16, 9]}]}
